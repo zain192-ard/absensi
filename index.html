@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UJIAN ONLINE VERSI 3</title>
+  <link rel="icon" href="https://via.placeholder.com/80" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: #f4f4f4;
+    }
+    .iframe-container {
+      width: 100%;
+      height: 100%;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="iframe-container">
+    <iframe
+      id="app"
+      src="https://script.google.com/macros/s/AKfycbx4oqtxUIEYSr7wl57M83hRWjq-EPuaoStxP98L8qB5pKv73dwfV9XN2nyjj-qVOt9m/exec"
+      scrolling="yes"
+      allowfullscreen="true"
+      webkitallowfullscreen="true">
+    </iframe>
+  </div>
+
+  <script>
+    // Fitur ganti link dinamis via parameter URL di GitHub Pages
+    const params = new URLSearchParams(window.location.search);
+    const iframe = document.getElementById("app");
+
+    const customUrl = params.get("url");
+    const scriptId = params.get("id");
+
+    if (customUrl) {
+      // Contoh akses: ?url=https://script.google.com/.../exec
+      iframe.src = customUrl;
+    } else if (scriptId) {
+      // Contoh akses cukup pakai ID: ?id=AKfycby...
+      iframe.src = `https://script.google.com/macros/s/${scriptId}/exec`;
+    }
+  </script>
+</body>
+</html>
